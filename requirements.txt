@@ -1,2 +1,6 @@
 streamlit
+pathlib
+requests
+pandas
+pandas.io.json
 
