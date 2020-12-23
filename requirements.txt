@@ -2,5 +2,6 @@ streamlit
 pathlib
 requests
 pandas
+pandas-io
 base64
 
