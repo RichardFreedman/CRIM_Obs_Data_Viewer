@@ -2,7 +2,7 @@ import streamlit as st
 from pathlib import Path
 import requests
 import pandas as pd
-from pandas.io.json import json_normalize
+from pandas.io.json import json.normalize
 
 # sets up function to call Markdown File for "about"
 def read_markdown_file(markdown_file):
