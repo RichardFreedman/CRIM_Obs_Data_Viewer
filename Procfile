@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run LV_Streamlit_Viewer_App.py
+web: sh setup.sh && streamlit run CRIM_Streamlit_Viewer_App..py
