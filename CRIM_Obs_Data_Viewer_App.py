@@ -51,6 +51,7 @@ def get_data():
     return df 
 df = get_data()
 
+ema_test_data = df[["id", "piece.url", "ema", "piece.piece_id"]]
 select_data = df[["id", "observer.name", "piece.piece_id", "musical_type"]]
 
 # Sidebar options for _all_ data of a particular type
@@ -60,6 +61,10 @@ st.sidebar.write('Use checkboxes below to see all data of a given category.  Adv
 if st.sidebar.checkbox('Show All Metadata Fields'):
     st.subheader('All CRIM Observations with All Metadata')
     st.write(df)
+
+if st.sidebar.checkbox('EMA Test Data'):
+    st.subheader('EMA Test Data')
+    st.write(ema_test_data)
 
 if st.sidebar.checkbox('Show Selected Metadata:  Observer, Piece, Type'):
     st.subheader('Selected Metadata:  Observer, Piece, Type')
@@ -86,6 +91,13 @@ sa = st.text_input('Name of file for download (must include ".csv")')
 if st.button('Download Complete Dataset as CSV'):
     #s = st.text_input('Enter text here')
     tmp_download_link = download_link(df, sa, 'Click here to download your data!')
+    st.markdown(tmp_download_link, unsafe_allow_html=True)
+
+sb = st.text_input('Name of file for download (must include ".csv")')
+## Button to download CSV of results 
+if st.button('EMA test data as CSV'):
+    #s = st.text_input('Enter text here')
+    tmp_download_link = download_link(df, sb, 'Click here to download your data!')
     st.markdown(tmp_download_link, unsafe_allow_html=True)
     
 # These are the filters in the main window 
