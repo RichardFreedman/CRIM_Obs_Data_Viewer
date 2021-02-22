@@ -62,10 +62,6 @@ if st.sidebar.checkbox('Show All Metadata Fields'):
     st.subheader('All CRIM Observations with All Metadata')
     st.write(df)
 
-if st.sidebar.checkbox('EMA Test Data'):
-    st.subheader('EMA Test Data')
-    st.write(ema_test_data)
-
 if st.sidebar.checkbox('Show Selected Metadata:  Observer, Piece, Type'):
     st.subheader('Selected Metadata:  Observer, Piece, Type')
     st.write(select_data)
@@ -84,8 +80,10 @@ if st.sidebar.checkbox('Show Total Observations per Piece ID'):
 
 if st.sidebar.checkbox('Show Total Observations per Musical Type'):
     st.subheader('Total Observations per Musical Type')
-    st.write(df['musical_type'].value_counts())    
+    st.write(df['musical_type'].value_counts())
+  
 
+st.subheader("All Data and MEI Views")
 sa = st.text_input('Name of file for download (must include ".csv")')
 ## Button to download CSV of results 
 if st.button('Download Complete Dataset as CSV'):
@@ -93,18 +91,25 @@ if st.button('Download Complete Dataset as CSV'):
     tmp_download_link = download_link(df, sa, 'Click here to download your data!')
     st.markdown(tmp_download_link, unsafe_allow_html=True)
 
+st.markdown("---")
+st.subheader("EMA Test Data")
+if st.checkbox('EMA Test Data'):
+    st.subheader('EMA Test Data')
+    st.write(ema_test_data)   
 sb = st.text_input('Name of EMA test file for download (must include ".csv")')
 ## Button to download CSV of results 
 if st.button('EMA test data as CSV'):
     #s = st.text_input('Enter text here')
     tmp_download_link = download_link(ema_test_data, sb, 'Click here to download your data!')
     st.markdown(tmp_download_link, unsafe_allow_html=True)
-    
+
+
 # These are the filters in the main window 
+st.header("Filter Views")
 st.write('Use the following dialogues to filter for one or more Analyst, Observation, or Musical Type')
 st.write('To download a CSV file with the given results, provide a filename as requested, then click the download button')
 
-st.header("Select Observations by Analyst")
+st.subheader("Select Observations by Analyst")
 obs_list = select_data['observer.name'].unique()
 obs_selected = st.multiselect('', obs_list)
 
@@ -123,7 +128,7 @@ if st.button('Download Observer Results as CSV'):
 
 st.markdown("---")
 # # Mask to filter dataframe:  returns only those "selected" in previous step
-st.header("Select Observations by Piece")
+st.subheader("Select Observations by Piece")
 piece_list = select_data['piece.piece_id'].unique()
 pieces_selected = st.multiselect('', piece_list)
 
@@ -140,7 +145,7 @@ if st.button('Download Piece Results as CSV'):
     st.markdown(tmp_download_link, unsafe_allow_html=True)
 
 st.markdown("---")
-st.header("Select Observations by Musical Type")
+st.subheader("Select Observations by Musical Type")
 type_list = select_data['musical_type'].unique()
 types_selected = st.multiselect('', type_list)
 
@@ -155,8 +160,6 @@ s3 = st.text_input('Name of Musical Type file for download (must include ".csv")
 if st.button('Download Musical Type Results as CSV'):
     tmp_download_link = download_link(select_data_3, s3, 'Click here to download your data!')
     st.markdown(tmp_download_link, unsafe_allow_html=True)
-
-
 
 
 
