@@ -81,7 +81,13 @@ if st.sidebar.checkbox('Show Total Observations per Musical Type'):
     st.subheader('Total Observations per Musical Type')
     st.write(df['musical_type'].value_counts())    
 
-
+sa = st.text_input('Name of file for download (must include ".csv")')
+## Button to download CSV of results 
+if st.button('Download Complete Dataset as CSV'):
+    #s = st.text_input('Enter text here')
+    tmp_download_link = download_link(df, sa, 'Click here to download your data!')
+    st.markdown(tmp_download_link, unsafe_allow_html=True)
+    
 # These are the filters in the main window 
 st.write('Use the following dialogues to filter for one or more Analyst, Observation, or Musical Type')
 st.write('To download a CSV file with the given results, provide a filename as requested, then click the download button')
