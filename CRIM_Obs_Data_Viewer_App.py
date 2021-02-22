@@ -93,7 +93,7 @@ if st.button('Download Complete Dataset as CSV'):
     tmp_download_link = download_link(df, sa, 'Click here to download your data!')
     st.markdown(tmp_download_link, unsafe_allow_html=True)
 
-sb = st.text_input('Name of file for download (must include ".csv")')
+sb = st.text_input('Name of EMA test file for download (must include ".csv")')
 ## Button to download CSV of results 
 if st.button('EMA test data as CSV'):
     #s = st.text_input('Enter text here')
