@@ -97,7 +97,7 @@ sb = st.text_input('Name of file for download (must include ".csv")')
 ## Button to download CSV of results 
 if st.button('EMA test data as CSV'):
     #s = st.text_input('Enter text here')
-    tmp_download_link = download_link(df, sb, 'Click here to download your data!')
+    tmp_download_link = download_link(ema_test_data, sb, 'Click here to download your data!')
     st.markdown(tmp_download_link, unsafe_allow_html=True)
     
 # These are the filters in the main window 
